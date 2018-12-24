@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a9b35784-166f-4ae3-9a8a-1e172bd781b4" name="nd" url="http://114.55.104.112">
+        <fileTransfer host="114.55.104.112" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="e1d8acea-3d30-42b3-8013-4b5a1f000fc9" name="tk" url="http://47.92.6.86">
+        <fileTransfer host="47.92.6.86" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

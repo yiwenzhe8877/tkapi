@@ -1,0 +1,16 @@
+<?php
+
+namespace app\models\{dir};
+
+
+class {class} extends \yii\db\ActiveRecord
+{
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return '{tablename}';
+    }
+
+}

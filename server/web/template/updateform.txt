@@ -1,0 +1,35 @@
+<?php
+
+namespace app\modules\{module}\forms\{one}\{two};
+
+
+
+use app\componments\sql\SqlUpdate;
+use app\componments\common\CommonForm;
+
+
+class UpdateForm extends CommonForm
+{
+
+
+   {fields}
+
+
+    public function addRule(){
+       return [
+           [[{required}],'required','message'=>'{attribute}不能为空'],
+           [['{id}'], 'exist','targetClass' => 'app\models\{tablepath}', 'message' => '{attribute}不存在'],
+
+       ];
+    }
+
+    public function run($form){
+
+        $obj=new SqlUpdate();
+        $obj->setTableName('{tablename_noprefix}');
+        $obj->setData($form);
+        $obj->setWhere(['{id}='=>$form->{id}]);
+        return $obj->run();
+
+    }
+}

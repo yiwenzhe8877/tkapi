@@ -1,0 +1,21 @@
+<?php
+
+namespace app\modules\v1\forms\admin\menu;
+
+
+use app\models\api\admin\group\AdminGroupApi;
+use app\models\api\admin\user\GetLoginedAdminUserApi;
+use app\modules\v1\forms\CommonForm;
+
+class GetMenuGroupRelationForm extends CommonForm
+{
+
+
+
+    public function run(){
+
+        return AdminGroupApi::getGroupMenus(GetLoginedAdminUserApi::getGroupId());
+
+    }
+
+}

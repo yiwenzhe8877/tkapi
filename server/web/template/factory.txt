@@ -1,0 +1,17 @@
+<?php
+
+namespace app\modules\{module}\factory\{dir};
+
+use app\modules\{module}\factory\BaseFactory;
+
+class {class} extends BaseFactory
+{
+    public $form_map = [
+        '{tablename}.delete'=>'app\modules\{module}\forms\{dir}\{subdir}\DeleteForm',
+        '{tablename}.add'=>'app\modules\{module}\forms\{dir}\{subdir}\AddForm',
+        '{tablename}.getlist'=>'app\modules\{module}\forms\{dir}\{subdir}\GetListForm',
+        '{tablename}.update'=>'app\modules\{module}\forms\{dir}\{subdir}\UpdateForm',
+        '{tablename}.getall'=>'app\modules\{module}\forms\{dir}\{subdir}\GetAllForm',
+    ];
+
+}

@@ -1,0 +1,40 @@
+<?php
+
+
+namespace app\modules\{module}\factory;
+
+
+use app\componments\utils\ApiException;
+
+class Factory
+{
+
+
+    static public $SERVICE_MAP =[
+        {methods}
+    ];
+
+
+    //创建相应的支付服务实例
+    public static function createInstance($service)
+    {
+        //判断是否存在这个服务
+        if(!array_key_exists($service,array_merge(self::$SERVICE_MAP,FactoryAdd::getAdd())))
+        {
+            ApiException::run("该服务不存在",'100010');
+        }
+
+        $clazz =array_merge(self::$SERVICE_MAP,FactoryAdd::getAdd())[$service];
+        return new $clazz();
+    }
+     public static function getFormName($service)
+     {
+            //判断是否存在这个服务
+            if(!array_key_exists($service,array_merge(self::$SERVICE_MAP,FactoryAdd::getAdd())))
+            {
+                ApiException::run("该服务不存在",'100010');
+            }
+
+            return array_merge(self::$SERVICE_MAP,FactoryAdd::getAdd())[$service];
+     }
+}
