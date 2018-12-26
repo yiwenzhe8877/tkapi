@@ -19,6 +19,27 @@ class SqlUpdate
     private $_where=[];
     private $_data=[];
 
+    private  $_map=[
+        "tkuser_base"=>'app\models\tkuser\base',
+
+    ];
+
+    /**
+     * @return array
+     */
+    public function getMap()
+    {
+        return $this->_map;
+    }
+
+    /**
+     * @param array $map
+     */
+    public function setMap($map)
+    {
+        $this->_map = $map;
+    }
+
     /**
      * @return mixed
      */
@@ -80,18 +101,25 @@ class SqlUpdate
         }
 
         $sql=substr($sql,0,strlen($sql)-1);
-        
+
         $sql.=' where ';
 
         foreach ($this->getWhere() as $k=>$v){
             $sql.=Filter::sqlinject($k).'"'.Filter::sqlinject($v).'"';
         }
 
-        $connection = \Yii::$app->db;
-        $command = $connection->createCommand($sql);
-        $result = $command->execute();
+        $result = \Yii::$app->getDb()->createCommand($sql)->execute();
+        //$command = $connection->createCommand($sql);
+       // $result = $command->execute();
 
         return $result;
+
+
+
+
+
+
+
     }
 
     public function changeonefield(){

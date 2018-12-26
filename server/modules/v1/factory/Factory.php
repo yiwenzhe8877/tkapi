@@ -20,11 +20,36 @@ class Factory
         //用户登录
 
         'memberbase.login'=>'app\modules\v1\forms\member\base\LoginForm',
+        //用户退出
+
+        'memberbase.logout'=>'app\modules\v1\forms\member\base\LogoutForm',
+
+        //用户下级
+        'memberbase.team'=>'app\modules\v1\forms\member\base\TeamForm',
 
         //忘记密码
         'memberbase.forgetpassword'=>'app\modules\v1\forms\member\base\ForgetPasswordForm',
 
+        //用户消息列表
         'membermsg.getlist'=>'app\modules\v1\forms\member\msg\GetListForm',
+
+
+        //用户支付宝保存
+        'membersetting.savezhifubao'=>'app\modules\v1\forms\member\setting\SavezhifubaoForm',
+
+
+        //用户订单
+        'orderbase.getlist'=>'app\modules\v1\forms\order\base\GetlistForm',
+
+        //销售排行
+        'goodslist.topsell'=>'app\modules\v1\forms\goods\lists\TopSellForm',
+
+        //提现
+        'moneybase.withdraw'=>'app\modules\v1\forms\money\base\WithDrawForm',
+
+
+        //提现日志
+        'moneybase.withdrawlog'=>'app\modules\v1\forms\money\base\WithDrawLogForm'
 
     ];
 

@@ -64,10 +64,10 @@ class H5
         }
 
         $data= [
+            'jun'=>$jun,
             'banner'=>$banners,
             'seller'=>$seller,
             'recommend'=>$recommand,
-            'jun'=>$jun
         ];
 
 
