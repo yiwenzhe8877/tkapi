@@ -134,6 +134,8 @@ class SqlGet
         if($this->getOrderBy()!=''){
             $sql.=' order By '.$this->getOrderBy();
         }
+        //p($sql);
+
         $connection = \Yii::$app->db;
         $command = $connection->createCommand($sql);
         $result = $command->queryAll();
@@ -143,12 +145,8 @@ class SqlGet
 
 
 
-
         $command = $connection->createCommand($sql);
         $result = $command->queryAll();
-
-
-
 
 
         return [

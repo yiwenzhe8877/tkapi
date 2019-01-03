@@ -10,6 +10,8 @@ class SqlCreate
 {
     private  $_map=[
         "tkuser_base"=>'app\models\tkuser\base',
+        "tkuser_withdrawlog"=>'app\models\tkuser\withdrawlog',
+        "tkuser_favgoods"=>'app\models\tkuser\favgoods',
 
     ];
     private $_tableName='';
