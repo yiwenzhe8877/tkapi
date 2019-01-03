@@ -37,8 +37,8 @@ class H5
             return ['code'=>'10020002','msg'=>"淘宝接口错误"];
         }
 
-
-        $banners=$data->item->images;
+        $apistack=json_decode($data->apiStack[0]->value)->item;
+        $banners=$data->item;
 
         $seller=$data->seller;
 
@@ -67,6 +67,7 @@ class H5
             'jun'=>$jun,
             'banner'=>$banners,
             'seller'=>$seller,
+            'apistack'=>$apistack,
             'recommend'=>$recommand,
         ];
 

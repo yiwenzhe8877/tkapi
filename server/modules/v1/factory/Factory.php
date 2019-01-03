@@ -49,7 +49,21 @@ class Factory
 
 
         //提现日志
-        'moneybase.withdrawlog'=>'app\modules\v1\forms\money\base\WithDrawLogForm'
+        'moneybase.withdrawlog'=>'app\modules\v1\forms\money\base\WithDrawLogForm',
+
+        //金额日志
+        'moneylog.getlist'=>'app\modules\v1\forms\money\log\GetListForm',
+
+
+        //用户收藏的商品列表
+        'goodsfavgoods.getlist'=>'app\modules\v1\forms\goods\favgoods\GetListForm',
+        //用户添加商品收藏，
+        'goodsfavgoods.add'=>'app\modules\v1\forms\goods\favgoods\AddForm',
+        //用户取消商品收藏，
+        'goodsfavgoods.delete'=>'app\modules\v1\forms\goods\favgoods\DeleteForm',
+
+        //获得搜索热词
+        'searchhot.getall'=>'app\modules\v1\forms\search\hot\GetAllForm'
 
     ];
 
