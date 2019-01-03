@@ -59,9 +59,9 @@ class H5
         }
 
         $jun=$this->jundetail($goodsid);
-        if(!$jun){
-            return ['code'=>'10020003','msg'=>"jun的查详情接口报错"];
-        }
+//        if(!$jun){
+//            return ['code'=>'10020003','msg'=>"jun的查详情接口报错"];
+//        }
 
         $data= [
             'banner'=>$banners,
