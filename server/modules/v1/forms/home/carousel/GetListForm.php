@@ -23,7 +23,7 @@ class GetListForm extends CommonForm
         if($ret){
            return $ret;
         }
-
+        
 
         $d=json_decode(Hdk::talent_info())->data->topdata;
 

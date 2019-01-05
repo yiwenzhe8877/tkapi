@@ -69,6 +69,8 @@ class Factory
         //首页轮播
         'homecarousel.get'=>'app\modules\v1\forms\home\carousel\GetListForm',
 
+        //首页最火
+        'homemosthot.get'=>'app\modules\v1\forms\home\mosthot\MostHotForm',
 
 
     ];
