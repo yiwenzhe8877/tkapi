@@ -41,7 +41,7 @@ $config = [
             'host'=>'127.0.0.1',
             'port'=>'5672',
             'adminUser'=>'rabbitmq_user',
-            'passwd'=>'e111111',
+            'passwd'=>'e1112111',
         ],
         'response'=>[
             'class' => 'yii\web\Response',
@@ -51,14 +51,9 @@ $config = [
             ],
         ],
         'cache' => [
-            //'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\FileCache',
 
-            'class'=>'yii\redis\Cache',
-            'redis'=>[
-                'hostname' => '127.0.0.1',
-                'port' => '6379',
-                'database' => 0
-            ]
+
         ],
         'user' => [
             'identityClass' => 'app\models\admin\user',
