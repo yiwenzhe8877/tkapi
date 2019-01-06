@@ -63,7 +63,15 @@ class Factory
         'goodsfavgoods.delete'=>'app\modules\v1\forms\goods\favgoods\DeleteForm',
 
         //获得搜索热词
-        'searchhot.getall'=>'app\modules\v1\forms\search\hot\GetAllForm'
+        'searchhot.getall'=>'app\modules\v1\forms\search\hot\GetAllForm',
+
+
+        //首页轮播
+        'homecarousel.get'=>'app\modules\v1\forms\home\carousel\GetListForm',
+
+        //首页最火
+        'homemosthot.get'=>'app\modules\v1\forms\home\mosthot\MostHotForm',
+
 
     ];
 
