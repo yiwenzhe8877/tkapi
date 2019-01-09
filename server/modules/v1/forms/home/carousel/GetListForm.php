@@ -16,16 +16,57 @@ class GetListForm extends CommonForm
     public function run(){
 
 
+        $arr=[
+            [
+                'img'=>'http://img.haodanku.com/Fl4ihpfUjWwzJ90zXh1rA3zseLZa',
+                'title'=>'美妆',
+                'status'=>2
+            ],
+            [
+                'img'=>'http://img.haodanku.com/Fmw4OVrODSIFfdi0OFaidKYeqe-T',
+                'title'=>'裙子女冬',
+                'status'=>2
+            ],
+            [
+                'img'=>'http://img.haodanku.com/FjcWcqW1sXsBbC0_wLEWLZkQR5Bq',
+                'title'=>'9.9包邮好货',
+                'status'=>2
+            ],
+            [
+                'img'=>'http://img.haodanku.com/FqydWIGVpsiQNVmPetVy9VEzm2H8',
+                'title'=>'暖脚',
+                'status'=>2
+            ],
+            [
+                'img'=>'http://img.haodanku.com/FhiWQ-0SEMWdD3dlN3XkWJZw7XdV',
+                'title'=>'追剧零食',
+                'status'=>2
+            ],
+            [
+                'img'=>'http://img.haodanku.com/FuUFPnIzpc2aNgIqIH2qNFgBXmiq',
+                'title'=>'出租屋',
+                'status'=>2
+            ],
+            [
+                'img'=>'http://img.haodanku.com/FmrPu6_0DXsSH8UQljj5hwvdbEqD',
+                'title'=>'暖胃',
+                'status'=>2
+            ],
+        ];
+        return $arr;
+
 
         $cache=\Yii::$app->cache;
 
-        $ret=$cache->get('homecarousel');
-        if($ret){
-           return $ret;
-        }
+//        $ret=$cache->get('homecarousel');
+//        if($ret){
+//           return $ret;
+//        }
         
 
         $d=json_decode(Hdk::talent_info())->data->topdata;
+
+        return $d;
 
         $all=[];
         $l=count($d);

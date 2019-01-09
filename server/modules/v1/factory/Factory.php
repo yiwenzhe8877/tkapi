@@ -73,6 +73,9 @@ class Factory
         'homemosthot.get'=>'app\modules\v1\forms\home\mosthot\MostHotForm',
 
 
+        //品牌推荐分类
+        'brandrecommend.get'=>'app\modules\v1\forms\brand\recommend\RecommendForm',
+
     ];
 
 
