@@ -7,6 +7,8 @@ namespace app\modules\v1\forms\home\carousel;
 use app\componments\common\CommonForm;
 use app\componments\platformapi\hdk\Hdk;
 use app\componments\sql\SqlGet;
+use app\componments\zfbtransfer\Alipay;
+use app\componments\zfbtransfer\Transfer;
 
 class GetListForm extends CommonForm
 {
@@ -16,6 +18,7 @@ class GetListForm extends CommonForm
     public function run(){
 
 
+       
         $arr=[
             [
                 'img'=>'http://img.haodanku.com/Fl4ihpfUjWwzJ90zXh1rA3zseLZa',
@@ -56,6 +59,22 @@ class GetListForm extends CommonForm
         return $arr;
 
 
+        $obj=new Alipay();
+        $data = [
+            'payee_account'  => '18367724000@163.com', //收款方账户
+            'amount'  => '0.1', //金额
+        ];
+
+
+        //UTF-8格式的json数据
+        $res = iconv('gbk','utf-8',$obj->transfer($data));
+
+
+        //转换为数组
+        $res = json_decode($res,true);
+
+        p($res);
+        return;
         $cache=\Yii::$app->cache;
 
 //        $ret=$cache->get('homecarousel');
