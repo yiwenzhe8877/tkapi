@@ -12,6 +12,7 @@ class SqlCreate
         "tkuser_base"=>'app\models\tkuser\base',
         "tkuser_withdrawlog"=>'app\models\tkuser\withdrawlog',
         "tkuser_favgoods"=>'app\models\tkuser\favgoods',
+        'tkpay_transferlog'=>'app\models\tkpay\Transferlog',
 
     ];
     private $_tableName='';

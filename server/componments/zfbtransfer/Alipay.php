@@ -12,6 +12,7 @@ class Alipay extends Base
 {
     const TRANSFER = 'https://openapi.alipay.com/gateway.do';
 
+
     public function __construct() {
 
 
@@ -34,7 +35,7 @@ class Alipay extends Base
 
         //请求参数
         $api_params = [
-            'out_biz_no'  => date('YmdHis'),//商户转账订单号
+            'out_biz_no'  =>$data['biz_no'] ,//商户转账订单号
             'payee_type'  => 'ALIPAY_LOGONID', //收款方账户类型
             'payee_account'  => $data['payee_account'], //收款方账户
             'amount'  => $data['amount'], //金额

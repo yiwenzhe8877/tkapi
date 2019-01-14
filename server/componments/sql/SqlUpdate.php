@@ -21,7 +21,7 @@ class SqlUpdate
 
     private  $_map=[
         "tkuser_base"=>'app\models\tkuser\base',
-
+        'tkpay_transferlog'=>'app\models\tkpay\Transferlog',
     ];
 
     /**

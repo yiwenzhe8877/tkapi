@@ -76,6 +76,9 @@ class Factory
         //品牌推荐分类
         'brandrecommend.get'=>'app\modules\v1\forms\brand\recommend\RecommendForm',
 
+        //转账接口
+        'moneytransfer.do'=>'app\modules\v1\forms\money\transfer\TransferForm',
+
     ];
 
 
