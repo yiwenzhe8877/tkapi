@@ -37,7 +37,6 @@ class QueryParamAuthFrontEnd extends AuthMethod
     public function authenticate($user, $request, $response)
     {
 
-
         //service
         $post=$request->post();
 

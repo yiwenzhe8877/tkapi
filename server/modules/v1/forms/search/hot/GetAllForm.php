@@ -22,7 +22,19 @@ class GetAllForm extends CommonForm
 //        echo \Yii::$app->cache->get("a");
 //        return;
        $data= json_decode(Hdk::hot_key())->data;
-       return $data;
+
+       $temp=[];
+
+       if(count($data)>20){
+           $count=20;
+       }else{
+           $count=count($data);
+       }
+
+       for ($i=0;$i<$count;$i++){
+           array_push($temp,$data[$i]);
+       }
+       return ['list'=>$temp];
     }
 
 

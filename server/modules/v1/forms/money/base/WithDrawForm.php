@@ -39,7 +39,11 @@ class WithDrawForm extends CommonForm
         }
         $data=WithdrawLog::withdrawApi('',$phone,'app',$form->money);
 
-        return $data;
+        if($data['code']!='0'){
+            ApiException::run($data['msg'],$data['code']);
+        }
+
+        return "";
     }
 
 

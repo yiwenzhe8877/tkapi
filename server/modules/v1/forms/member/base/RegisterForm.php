@@ -15,6 +15,7 @@ use app\componments\utils\PwdUtils;
 use app\componments\utils\RandomUtils;
 use app\componments\utils\ValidateUtils;
 use app\models\tkuser\Base;
+use app\models\tkuser\Verifycode;
 
 class RegisterForm extends CommonForm
 {
@@ -51,11 +52,21 @@ class RegisterForm extends CommonForm
         }
         $p_phone=$one->phone;
 
+
+        if($p_phone==null || $p_phone==''){
+            ApiException::run("父级手机不存在",'900001');
+        }
+
         $s_phone= Base::getSuperPhone($p_phone);
 
 
         //验证code
-        Mob::verify_code($form->phone,$form->code);
+       // Mob::verify_code($form->phone,$form->code);
+
+        if(!YII_DEBUG){
+            Verifycode::verify_code_yf($form->phone,$form->code,2);
+        }
+
 
         $cover=[
             'password'=>PwdUtils::encryptLoginPwd($form->password),
@@ -64,7 +75,9 @@ class RegisterForm extends CommonForm
             's_phone'=>$s_phone,
             'group_id'=>1,
             'group_name'=>\Yii::$app->params['user_group']['1'],
-            'auth_key'=>RandomUtils::get_random_nummixenglish(32)
+            'auth_key'=>RandomUtils::get_random_nummixenglish(32),
+            'yaoqingma'=>RandomUtils::get_random_nummixenglish(6),
+            'jointime'=>time()
         ];
 
         $obj=new SqlCreate();

@@ -17,10 +17,10 @@ class RecommendForm extends CommonForm
 
         $cache=\Yii::$app->cache;
 
-//        $ret=$cache->get('brand-recommend');
-//        if($ret){
-//            return $ret;
-//        }
+        $ret=$cache->get('brand-recommend');
+        if($ret!==false){
+            return ['list'=>$ret];
+        }
 
 
         $data=Recommend::find()->all();
@@ -56,7 +56,7 @@ class RecommendForm extends CommonForm
 
         $cache->set('brand-recommend',$brandarr,7200);
 
-        return $brandarr;
+        return ['list'=>$brandarr];
     }
 
 }

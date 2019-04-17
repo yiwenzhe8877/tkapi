@@ -27,6 +27,15 @@ class jun  {
         return $result;
     }
 
+    //淘口令生成接口(官方API) 没限频率
+    public function createpwd($url){
+        $send_data = "api?key=".$this->apikey."&utf=1&getname=createtpwd&url=".urlencode($url)."&text=".urlencode('铃铛免单商品')."&logo=".urlencode('https://img.alicdn.com/tps/i3/TB1XIwGHFXXXXcBXFXXLZDx_pXX-107-44.png');
+        $result=$this->socket_alimama($send_data);
+
+        return $result;
+        //http://软件IP:端口/api?Key=连接密钥&getname=createtpwd&url=口令跳转目标页&text=口令弹框内容&logo=
+    }
+
     /*
      * 2,根据商品链接获取转链后的数据
      * */
@@ -381,21 +390,14 @@ class jun  {
       &startTkRate=1(比率范围起)&endTkRate=20(比率范围终)
       &startPrice=32(价格范围起)&endPrice=97(价格范围终)
       &loc=重庆(发货地,必须urlencode)
-
+排序_des（降序），排序_asc（升序），销量（total_sales），淘客佣金比率（tk_rate）， 累计推广量（tk_total_sales），总支出佣金（tk_total_commi），价格（price）
     http://软件IP:端口/api?Key=连接密钥&getname=list&adzone_id=推广位ID&q=关键字
      * */
-    public function get_goodslist($kw,$page,$pagesize,$sortType,$hasCoupon=false,$istmall=false){
-        $s='';
-        if($hasCoupon){
-            $s='&shopTag=dpyhq&dpyhq=1';
-        }
-        if($istmall){
-            $s=$s.'&b2c=1&shopTag=b2c';
-        }
-        $d = 'q='.$kw.'&queryType=0&sortType'.$sortType.'&toPage='.$page.'&perPageSize='.$pagesize.$s;
-
+    public function get_goodslist($kw,$page,$sort,$hasCoupon){
         $ad_id='76292354';
-        $send_data="api?Key=".$this->apikey."&getname=list&adzone_id=".$ad_id."&q=".urlencode($kw);//."&is_tmall=".$istmall.'&page_no='.$page."&page_size=".$pagesize;
+
+
+        $send_data="api?Key=".$this->apikey."&getname=list&adzone_id=".$ad_id."&q=".urlencode($kw).'&page_no='.$page."&has_coupon=".$hasCoupon."&sort=".$sort;
         $result=$this->socket_alimama($send_data);
         return $result;
     }

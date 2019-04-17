@@ -10,12 +10,13 @@ use app\modules\v1\forms\CommonForm;
 class GetListForm extends CommonForm
 {
 
-    public $pageNum;
+    public $page;
+    public $type;
 
 
     public function addRule(){
         return [
-            [['pageNum'],'required','message'=>'{attribute}不能为空'],
+            [['page','type'],'required','message'=>'{attribute}不能为空'],
         ];
     }
 
@@ -23,9 +24,11 @@ class GetListForm extends CommonForm
     public function run($form){
 
         $obj=new SqlGet();
-        $obj->setTableName('article_article');
-        $obj->setOrderBy('article_id desc');
-        $obj->setPageNum($form->pageNum);
+        $obj->setTableName('article');
+        $obj->setOrderBy('article_id asc');
+        $obj->setWhere(['author='=>$form->type]);
+        $obj->setPageNum($form->page);
+
         return $obj->get_list();
     }
 

@@ -9,7 +9,6 @@
 namespace app\componments\utils;
 
 
-use app\models\ApiExceptionlog;
 use app\models\tkapi\Exceptionlog;
 use yii\base\UserException;
 
@@ -22,6 +21,7 @@ class ApiException
         if(YII_DEBUG){
 
             $request=\Yii::$app->getRequest();
+            $accessToken='';
 
             $accessToken=$request->headers['token'];
 
@@ -42,11 +42,9 @@ class ApiException
             $model->msg=$msg;
             $model->save();
 
-            $msg=json_encode(['msg'=>$msg,'location'=>$class.'---'.$method.'---第'.$line.'行']);
-
-            //$msg.=$method.$line;
         }
 
+        $msg=json_encode(['msg'=>$msg,'location'=>$class.'---'.$method.'---第'.$line.'行']);
 
         throw new UserException($msg,$code);
     }

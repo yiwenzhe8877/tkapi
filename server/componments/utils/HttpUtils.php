@@ -50,6 +50,7 @@ class HttpUtils
         curl_setopt($ch, CURLOPT_COOKIE, $cookie);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
         if($header!='')
         {
             curl_setopt($ch, CURLOPT_HTTPHEADER, $header);

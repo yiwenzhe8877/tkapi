@@ -22,16 +22,32 @@ class TopSellForm extends CommonForm
 
     public function run($form){
 
-        $d= Hdk::sales_list($form->type);
-        $d=json_decode($d);
 
-        $code=$d->code;
-        if($code=='1'){
-            $page=$d->min_id;
-            $data=$d->data;
+        $cache=\Yii::$app->cache;
 
-            return $data;
+
+
+        $type=$form->type;
+        $topsell=$cache->get("topsell_".$type);
+        if($topsell==false){
+            $d= Hdk::sales_list($form->type);
+            $d=json_decode($d);
+
+            $code=$d->code;
+            if($code=='1'){
+                $page=$d->min_id;
+                $data=$d->data;
+
+                $cache->set('topsell_'.$type,$data,'7200');
+
+                return ['list'=>$data];
+            }
         }
+        return ['list'=>$topsell];
+
+
+
+
 
         ApiException::run(ResponseMap::Map('10020004'),'10020004');
     }

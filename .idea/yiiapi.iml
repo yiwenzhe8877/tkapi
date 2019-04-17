@@ -2,6 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/2amigos/qrcode-library" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/bacon/bacon-qr-code" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/behat/gherkin" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/bower-asset/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/bower-asset/inputmask" />
@@ -20,6 +23,8 @@
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/ezyang/htmlpurifier" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/imagine/imagine" />
+      <excludeFolder url="file://$MODULE_DIR$/server/vendor/khanamiryan/qrcode-detector-decoder" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/phar-io/manifest" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/phar-io/version" />
@@ -34,9 +39,7 @@
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/phpunit/php-timer" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/phpunit/php-token-stream" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/phpunit/phpunit" />
-      <excludeFolder url="file://$MODULE_DIR$/server/vendor/phpunit/phpunit-mock-objects" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/psr/http-message" />
-      <excludeFolder url="file://$MODULE_DIR$/server/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/sebastian/comparator" />
@@ -54,7 +57,6 @@
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/symfony/contracts" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/symfony/css-selector" />
-      <excludeFolder url="file://$MODULE_DIR$/server/vendor/symfony/debug" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/symfony/dom-crawler" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/symfony/event-dispatcher" />
       <excludeFolder url="file://$MODULE_DIR$/server/vendor/symfony/finder" />

@@ -15,6 +15,7 @@ use app\componments\sql\SqlUpdate;
 use app\componments\utils\ApiException;
 use app\componments\utils\PwdUtils;
 use app\componments\utils\ValidateUtils;
+use app\models\tkuser\Verifycode;
 
 class ForgetPasswordForm extends CommonForm
 {
@@ -44,7 +45,8 @@ class ForgetPasswordForm extends CommonForm
         }
 
         //验证code
-         Mob::verify_code($form->phone,$form->code);
+//         Mob::verify_code($form->phone,$form->code);
+        Verifycode::verify_code_yf($form->phone,$form->code,3);
 
 
         $obj=new SqlUpdate();

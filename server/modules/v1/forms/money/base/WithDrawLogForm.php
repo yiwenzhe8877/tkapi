@@ -18,13 +18,13 @@ use yii\db\Exception;
 class WithDrawLogForm extends CommonForm
 {
 
-    public $pageNum;
+    public $page;
     public $status;
 
 
     public function addRule(){
         return [
-            [['status','pageNum'],'required','message'=>'提交的数据不能为空'],
+            [['status','page'],'required','message'=>'提交的数据不能为空'],
         ];
     }
 
@@ -34,7 +34,7 @@ class WithDrawLogForm extends CommonForm
 
         $obj=new SqlGet();
         $obj->setTableName('tkuser_withdrawlog');
-        $obj->setOrderBy('id desc');
+        $obj->setOrderBy('dateline desc');
         $arr=['phone='=>$phone];
         if($form->status!=4){
             $arr[' and status=']=$form->status;
@@ -42,7 +42,7 @@ class WithDrawLogForm extends CommonForm
 
         $obj->setFields('FROM_UNIXTIME(dateline,\'%Y-%m-%d %H:%i:%s\') as dateline,phone,money,remark,status');
         $obj->setWhere($arr);
-        $obj->setPageNum($form->pageNum);
+        $obj->setPageNum($form->page);
         return $obj->get_list();
 
     }

@@ -11,12 +11,12 @@ use app\modules\v1\forms\CommonForm;
 class GetListForm extends CommonForm
 {
 
-    public $pageNum;
-    public $msgtype;
+    public $page;
+    public $type;
 
     public function addRule(){
         return [
-            [['pageNum','msgtype'],'required','message'=>'{attribute}不能为空'],
+            [['page','type'],'required','message'=>'{attribute}不能为空'],
         ];
     }
 
@@ -28,8 +28,9 @@ class GetListForm extends CommonForm
         $obj=new SqlGet();
         $obj->setTableName('tkuser_msglog');
         $obj->setOrderBy('dateline desc');
-        $obj->setWhere(['msgtype='=>$form->msgtype,' and phone='=>$phone]);
-        $obj->setPageNum($form->pageNum);
+        $obj->setWhere(['msgtype='=>$form->type,' and phone='=>$phone]);
+        $obj->setPageNum($form->page);
+        $obj->setFields('FROM_UNIXTIME(dateline,\'%Y-%m-%d %H:%i:%s\') as dateline,msgtouser');
         return $obj->get_list();
     }
 

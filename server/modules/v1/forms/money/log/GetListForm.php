@@ -11,12 +11,12 @@ use app\models\tkuser\Base;
 class GetListForm extends CommonForm
 {
 
-    public $pageNum;
+    public $page;
 
 
     public function addRule(){
         return [
-            [['pageNum'],'required','message'=>'提交的数据不能为空'],
+            [['page'],'required','message'=>'提交的数据不能为空'],
         ];
     }
 
@@ -31,7 +31,7 @@ class GetListForm extends CommonForm
 
         $obj->setFields('FROM_UNIXTIME(dateline,\'%Y-%m-%d %H:%i:%s\') as dateline,change_money,after_money,remark');
         $obj->setWhere(['phone='=>$phone]);
-        $obj->setPageNum($form->pageNum);
+        $obj->setPageNum($form->page);
         return $obj->get_list();
     }
 

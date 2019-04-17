@@ -17,6 +17,10 @@ class Base extends  \yii\db\ActiveRecord
         while ($flag){
             $user=Base::find()->where(['=','phone',$phone])->one();
 
+            if(!$user){
+                return '18658771300';
+            }
+
             if($user->group_id==3){
                 return $user->phone;
                 break;
@@ -29,18 +33,16 @@ class Base extends  \yii\db\ActiveRecord
 
     //获得用户手机
     public static function getUserPhone(){
-        $request=\Yii::$app->getRequest();
-        $accessToken=$request->headers[\Yii::$app->params['token']];
-
-        if(!$accessToken)
-            $accessToken = $request->get(\Yii::$app->params['token']);
-
-        $user=Base::find()->where(['=','auth_key',$accessToken])->one();
+        $user=self::getUserinfo();
         return $user->phone;
-
     }
 
     public static function getUserOpenid(){
+        $user=self::getUserinfo();
+        return $user->phone;
+    }
+
+    public static function getUserinfo(){
         $request=\Yii::$app->getRequest();
         $accessToken=$request->headers[\Yii::$app->params['token']];
 
@@ -48,7 +50,17 @@ class Base extends  \yii\db\ActiveRecord
             $accessToken = $request->get(\Yii::$app->params['token']);
 
         $user=Base::find()->where(['=','auth_key',$accessToken])->one();
-        return $user->phone;
+        return $user;
+    }
+
+
+    public static function is_exist($key,$value){
+        $user=Base::find()->where(['=',$key,$value])->count();
+
+        if($user>0)
+            return true;
+        else
+            return false;
     }
 
 

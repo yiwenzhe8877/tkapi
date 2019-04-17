@@ -68,9 +68,10 @@
       <path value="$PROJECT_DIR$/server/vendor/symfony/contracts" />
       <path value="$PROJECT_DIR$/server/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/server/vendor/yiisoft/yii2-redis" />
-      <path value="$PROJECT_DIR$/server/vendor/phpunit/phpunit-mock-objects" />
-      <path value="$PROJECT_DIR$/server/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/server/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/server/vendor/khanamiryan/qrcode-detector-decoder" />
+      <path value="$PROJECT_DIR$/server/vendor/2amigos/qrcode-library" />
+      <path value="$PROJECT_DIR$/server/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/server/vendor/imagine/imagine" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

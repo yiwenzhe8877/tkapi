@@ -12,12 +12,12 @@ use app\models\tkuser\Base;
 class GetListForm extends CommonForm
 {
 
-    public $pageNum;
+    public $page;
 
 
     public function addRule(){
         return [
-            [['pageNum'],'required','message'=>'提交的数据不能为空'],
+            [['page'],'required','message'=>'提交的数据不能为空'],
         ];
     }
 
@@ -30,7 +30,7 @@ class GetListForm extends CommonForm
         $obj->setOrderBy('id desc');
 
         $obj->setWhere(['phone='=>$phone]);
-        $obj->setPageNum($form->pageNum);
+        $obj->setPageNum($form->page);
         return $obj->get_list();
     }
 

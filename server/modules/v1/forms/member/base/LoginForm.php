@@ -7,14 +7,10 @@ namespace app\modules\v1\forms\member\base;
 
 
 use app\componments\common\CommonForm;
-use app\componments\duanxin\Mob;
-use app\componments\sql\SqlCreate;
 use app\componments\sql\SqlUpdate;
 use app\componments\utils\ApiException;
-use app\componments\utils\Ip;
 use app\componments\utils\PwdUtils;
 use app\componments\utils\RandomUtils;
-use app\componments\utils\ValidateUtils;
 use app\models\tkuser\Base;
 
 class LoginForm extends CommonForm
@@ -41,12 +37,12 @@ class LoginForm extends CommonForm
 
         $random=RandomUtils::get_random_nummixenglish(32);
 
-        $obj=new SqlUpdate();
-        $obj->setTableName('tkuser_base');
-        $obj->setData(['auth_key'=>$random]);
-        $obj->setWhere(['phone='=>$user->phone]);
-        $obj->run();
-        return ['auth_key'=>$random];
+//        $obj=new SqlUpdate();
+//        $obj->setTableName('tkuser_base');
+//        $obj->setData(['auth_key'=>$random]);
+//        $obj->setWhere(['phone='=>$user->phone]);
+//        $obj->run();
+        return ['auth_key'=>$user->auth_key];
     }
 
 

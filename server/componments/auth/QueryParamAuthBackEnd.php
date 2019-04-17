@@ -27,7 +27,7 @@ use yii\filters\auth\AuthMethod;
  */
 class QueryParamAuthBackEnd extends AuthMethod
 {
-    public $white=['adminuser.login'];
+    public $white=['adminuser.login','membersms.send','memberbase.register','memberbase.forgetpassword','memberbase.login'];
 
     /**
      * @inheritdoc
@@ -50,9 +50,7 @@ class QueryParamAuthBackEnd extends AuthMethod
         if(!isset($service) || empty($service))
             ApiException::run(ResponseMap::Map('10010015'),'10010015',__CLASS__,__METHOD__,__LINE__);
 
-
         if(in_array($service,$this->white)){
-
             return true;
         }
 
@@ -65,7 +63,6 @@ class QueryParamAuthBackEnd extends AuthMethod
 
         if(empty($accessToken))
             ApiException::run(ResponseMap::Map('10010014'),'10010014',__CLASS__,__METHOD__,__LINE__);
-
 
 
         $identity = Base::find()

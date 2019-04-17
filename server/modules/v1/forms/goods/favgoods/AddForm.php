@@ -3,17 +3,13 @@
 namespace app\modules\v1\forms\goods\favgoods;
 
 
-
-
 use app\componments\common\CommonForm;
 use app\componments\sql\SqlCreate;
-use app\componments\sql\SqlUpdate;
+use app\componments\sql\SqlDeleteTrue;
 use app\componments\tb\H5;
-use app\componments\utils\ApiException;
-use app\componments\utils\PwdUtils;
-use app\componments\utils\RandomUtils;
 use app\models\tkuser\Base;
 use app\models\tkuser\FavGoods;
+use dosamigos\qrcode\QrCode;
 
 class AddForm extends CommonForm
 {
@@ -31,7 +27,24 @@ class AddForm extends CommonForm
     public function run($form){
 
 
+
+
+
         $phone=Base::getUserPhone();
+
+        $fav=FavGoods::find()
+            ->andWhere(['=','goodsid',$form->goodsid])
+            ->andWhere(['=','phone',$phone])
+            ->one();
+
+        if($fav){
+            $obj=new SqlDeleteTrue();
+            $obj->setTableName('tkuser_favgoods');
+            $obj->setWhere(['goodsid='=>$form->goodsid]);
+            $obj->run();
+            return ['msg'=>"取消收藏",'status'=>0];
+        }
+
         $h5=new H5();
         $data= $h5->detail($form->goodsid)['data'];
 
@@ -44,15 +57,6 @@ class AddForm extends CommonForm
         }
         if($seller->sellerType=='B'){
             $shoptype=2;
-        }
-
-        $fav=FavGoods::find()
-            ->andWhere(['=','goodsid',$form->goodsid])
-            ->andWhere(['=','phone',$phone])
-            ->one();
-
-        if($fav){
-            ApiException::run("商品已经添加到收藏了",'900000');
         }
 
         $cover=[
@@ -71,7 +75,8 @@ class AddForm extends CommonForm
         $obj=new SqlCreate();
         $obj->setTableName('tkuser_favgoods');
         $obj->setCoverData($cover);
-        return $obj->run();
+        $obj->run();
+        return ['msg'=>"收藏成功",'status'=>1];
     }
 
 

@@ -28,6 +28,9 @@ class DateUtils
     public static function getYMD(){
         return date('Y-m-d',time());
     }
+    public static function getymdshort(){
+        return date('Ymd',time());
+    }
     //13位
     public static function getLinuxTime(){
         list($t1, $t2) = explode(' ', microtime());
