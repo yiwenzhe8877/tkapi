@@ -45,8 +45,8 @@ class GetListForm extends CommonForm
 //        }
 
         $arr[' (phone=']=$phone;
-        $arr[' or p_phone=']=$phone;
-        $arr[' or s_phone=']=$phone;
+        //$arr[' or p_phone=']=$phone;
+        //$arr[' or s_phone=']=$phone;
 
         if($status==1){
             $status='';
@@ -66,7 +66,6 @@ class GetListForm extends CommonForm
         }else{
             $arr[') and id>']='0';
         }
-
 
         $obj=new SqlGet();
         $obj->setTableName('tkuser_order');

@@ -27,15 +27,33 @@ class GetAllForm extends CommonForm
         $cache=\Yii::$app->cache;
 
         $ret=$cache->get('jhs'.$form->page.$form->status);
+
         if($ret){
             return ['list'=>$ret];
         }
 
         $h5=new H5();
         $data= $h5->getJHS($form->page,$form->status);
-        $cache->set('jhs'.$form->page.$form->status,$data,3600);
 
-        return ['list'=>$data];
+        $all=[];
+
+        for ($i=0;$i<count($data);$i++){
+            $item = $data[$i];
+            $temp=[
+                'picUrl'=>$item->baseinfo->picUrl,
+                'title'=>$item->name->title,
+                'ostimeText'=>$item->baseinfo->ostimeText,
+                'merits'=>$item->merit,
+                'actPrice'=>$item->price->actPrice,
+                'origPrice'=>$item->price->origPrice,
+                'soldCount'=>$item->remind->soldCount
+            ];
+            array_push($all,$temp);
+        }
+
+        $cache->set('jhs'.$form->page.$form->status,$all,3600);
+
+        return ['list'=>$all];
     }
 
 

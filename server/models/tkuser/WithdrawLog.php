@@ -36,9 +36,6 @@ class WithdrawLog extends  \yii\db\ActiveRecord
                 ->one();
         }
 
-        if(!$user){
-            return ['code'=>'900000','msg'=>'用户信息不存在'];
-        }
 
 
         if($withdrawlog){

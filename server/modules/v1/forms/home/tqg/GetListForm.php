@@ -38,10 +38,25 @@ class GetListForm extends CommonForm
 
         $h5=new H5();
         $data= $h5->getTQGbytime($head,$form->page);
-        $cache->set('tqg'.$form->page.$head,$data,3600);
 
-        return ['list'=>$data];
+        $all=[];
+        for ($i=0;$i<count($data);$i++){
+            $item = $data[$i];
+            $temp=[
+                'itemId'=>$item->itemId,
+                'picUrl'=>'https:'.$item->picUrl,
+                'name'=>$item->name,
+                'selfSellingPoint'=>isset($item->selfSellingPoint)?$item->selfSellingPoint:'',
+                'salePrice'=>$item->salePrice,
+                'price'=>$item->price,
+                'soldRate'=>$item->soldRate
+            ];
+            array_push($all,$temp);
+        }
 
+        $cache->set('tqg'.$form->page.$head,$all,3600);
+
+        return ['list'=>$all];
 
     }
     /*

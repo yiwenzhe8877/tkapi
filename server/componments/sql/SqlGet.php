@@ -148,7 +148,7 @@ class SqlGet
 
 
         return [
-            'pageNum'=>$this->getPageNum(),
+            'page'=>$this->getPageNum(),
             'pageSize'=>$pagesize,
             'total'=>$count,
             'list'=>$result

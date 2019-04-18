@@ -34,6 +34,7 @@ class Base extends  \yii\db\ActiveRecord
     //获得用户手机
     public static function getUserPhone(){
         $user=self::getUserinfo();
+
         return $user->phone;
     }
 
@@ -49,7 +50,10 @@ class Base extends  \yii\db\ActiveRecord
         if(!$accessToken)
             $accessToken = $request->get(\Yii::$app->params['token']);
 
+
+
         $user=Base::find()->where(['=','auth_key',$accessToken])->one();
+
         return $user;
     }
 

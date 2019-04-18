@@ -21,7 +21,7 @@ class MostHotForm extends CommonForm
 
         $ret=$cache->get('homemosthot');
         if($ret){
-            return $ret;
+            return ['list'=>$ret];
         }
 
 
@@ -42,7 +42,7 @@ class MostHotForm extends CommonForm
 
         $cache->set('homemosthot',$all,7200);
 
-        return $all;
+        return  ['list'=>$all];
     }
 
 }

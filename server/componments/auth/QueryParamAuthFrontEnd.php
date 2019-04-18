@@ -13,7 +13,7 @@ use app\componments\utils\ResponseMap;
 use app\models\admin\auth;
 use app\models\admin\group;
 use app\models\admin\groupauth;
-use app\models\member\baseinfo;
+use app\models\tkuser\Base;
 use yii\filters\auth\AuthMethod;
 
 /**
@@ -47,10 +47,10 @@ class QueryParamAuthFrontEnd extends AuthMethod
             return true;
         }
         //token
-        $accessToken=$request->headers[\Yii::$app->params['admin_token']];
+        $accessToken=$request->headers[\Yii::$app->params['token']];
 
         if(!$accessToken){
-            $accessToken = $request->get(\Yii::$app->params['admin_token']);
+            $accessToken = $request->get(\Yii::$app->params['token']);
         }
 
 
@@ -58,7 +58,7 @@ class QueryParamAuthFrontEnd extends AuthMethod
             ApiException::run(ResponseMap::Map('10010014'),'10010014',__CLASS__,__METHOD__,__LINE__);
 
 
-        $identity =baseinfo::find()->andWhere(['=','auth_key',$accessToken])->one();
+        $identity =Base::find()->andWhere(['=','auth_key',$accessToken])->one();
 
         if ($identity === null)
             ApiException::run(ResponseMap::Map('10010005'),'10010005',__CLASS__,__METHOD__,__LINE__);
